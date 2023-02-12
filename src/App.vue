@@ -1,18 +1,20 @@
 <template>
   <ImageSlider />
-  <!-- <div class="main-visual">
-  </div> -->
-  <img alt="logo" src="./assets/logo.jpg">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Introduction />
+  <Tastes />
 </template>
 
 <script>
 import ImageSlider from './components/ImageSlider.vue'
+import Introduction from './components/Introduction.vue'
+import Tastes from './components/Tastes.vue'
 
 export default {
   name: 'App',
   components: {
-    ImageSlider
+    ImageSlider,
+    Introduction,
+    Tastes
   }
 }
 </script>
@@ -25,17 +27,10 @@ export default {
   color: #6c6b6b;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","HG明朝E","MS P明朝","MS 明朝",serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-.main-visual {
-  width: 100%;
-  height: 1000px;
-  background-image: url(./assets/appearance.jpg);
-  background-size: contain;
-  background-position: center;
 }
 </style>

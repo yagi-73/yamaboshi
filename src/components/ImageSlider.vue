@@ -1,7 +1,6 @@
 <template>
     <transition-group tag="ul" class="slide-fade">
-      <li v-for="slide in slides" :key="slide.id" :class="['slide'+slide.id, 'item', {'active' : slide.isActive}]"></li>
-      <!-- <li v-if="slides[0].isActive"></li> -->
+      <li v-for="slide in slides" :key="slide" :class="['slide'+slide, 'item']"></li>
     </transition-group>
 </template>
 <script>
@@ -9,32 +8,23 @@ export default {
   name: 'ImageSlider',
   data() {
     return {
-      slides: [
-        { id: 1, isActive: true},
-        { id: 2, isActive: false},
-        { id: 3, isActive: false}
-      ],
-      replace: [],
-      i: 1
-    };
+      slides: [1],
+      i: 2
+    }
   },
 
   mounted: function() {
-    setInterval(async () => {this.startSlide()}, 3000);
+    setInterval(async () => {this.startSlide()}, 3000)
   },
 
   methods: {
     startSlide: function() {
-      this.replace = { id: this.i, isActive: false}
-      this.slides.splice(0, this.i, this.replace);
-
+      this.slides.shift()
+      this.slides.splice(0, 1, this.i)
       this.i++;
       if (this.i > 3) {
         this.i = 1;
       }
-
-      this.replace = { id: this.i, isActive: true}
-      this.slides.splice(0, this.i, this.replace);
     }
   }
 }
@@ -43,28 +33,24 @@ export default {
 <style>
   .item {
     width: 100%;
-    height: 1000px;
+    height: 900px;
     background-size: contain;
     background-position: center;
     position: absolute;
-    display: none;
   }
   .slide-fade {
     width: 100%;
-    height: 1000px;
+    height: 900px;
     position: relative;
-  }
-  .active {
-    display: block;
   }
   .slide1 {
     background-image: url(../assets/appearance.jpg);
   }
   .slide2 {
-    background-image: url(../assets/logo.jpg);
+    background-image: url(../assets/sample1.jpg);
   }
   .slide3 {
-    background-image: url(../assets/soba.jpg);
+    background-image: url(../assets/sample2.jpg);
   }
 
   .v-enter-active, .v-leave-active {
